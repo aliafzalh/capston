@@ -1,13 +1,18 @@
 // const express = require('express');
 import express from 'express'
 import cors from 'cors'
+
+import 'dotenv/config'
+
+import connectDb from './db.js';
 const app = express()
-const port = 8080;
+const port = process.env.PORT
 
 app.use(cors())
 
 app.get('/', (req, res) => {
-  res.json('Hello (from server cors)');
+  res.json('Hello (from server Middleware_cors)');
+  
 });
 
-app.listen(port, () => console.log(`Listening on port ${port}`));
+app.listen(port, () => {console.log(`Listening on port ${port}`);connectDb()});
