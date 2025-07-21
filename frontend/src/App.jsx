@@ -7,18 +7,19 @@ import { useEffect } from 'react'
 function App() {
   
   useEffect(() => {
+    async function getData() {
     try {
-      async function getData() {
       const respose = await fetch('http://localhost:8080')
       const data = await respose.json()
       console.log(data)
-    }
-    } catch (error) {
+    }catch (error) {
       console.log(error)
     }
 
+  }
+    getData()
     
-  })
+  }, [])
 
   return (
     <>
