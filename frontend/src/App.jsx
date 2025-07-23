@@ -5,13 +5,17 @@ import './App.css'
 import { useEffect } from 'react'
 
 function App() {
+
+  const [todos, setTodos] = useState([])
   
   useEffect(() => {
     async function getData() {
     try {
-      const respose = await fetch('http://localhost:8080')
+      const respose = await fetch('http://localhost:8080/todos')
       const data = await respose.json()
+
       console.log(data)
+      setTodos(data)
     }catch (error) {
       console.log(error)
     }
@@ -20,13 +24,16 @@ function App() {
     getData()
     
   }, [])
+  console.log(todos)
 
   return (
     <>
-    Hello (from frontend)
+    <h1>Hello (from frontend)</h1>
 
     </>
   )
 }
 
 export default App
+
+
